@@ -13,11 +13,13 @@ module.exports	=	{
 		{
 			type:		'string'
 		,	required:	true
+		,	unique:		true
 		}
 	,	password:
 		{
 			type:		'password'
 		,	required:	true
+		,	minLength:	6
 		}
 	,	name:
 		{
