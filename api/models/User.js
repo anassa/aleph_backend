@@ -17,7 +17,7 @@ module.exports	=	{
 		}
 	,	password:
 		{
-			type:		'password'
+			type:		'string'
 		,	required:	true
 		,	minLength:	6
 		}
@@ -35,6 +35,7 @@ module.exports	=	{
 		//	Encripto la password del usuario. Esto ocurre antes de crear el usuario
 	,	beforeCreate: function(attrs, next)
 		{
+			console.log("CREATE")
 			//	Cargo el modulo de encriptacion (https://www.npmjs.org/package/bcrypt)
 			var	bcrypt
 			=	require('bcrypt')

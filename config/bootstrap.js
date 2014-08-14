@@ -11,7 +11,97 @@
 
 module.exports.bootstrap = function(cb) {
 
-  // It's very important to trigger this callback method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-  cb();
+	// It's very important to trigger this callback method when you are finished
+	// with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+
+	/*
+	 *	Creo la data basura (DummyData) para pruebas
+	 */
+
+	var	async
+	=	require('async')
+	,	bcrypt
+	=	require('bcrypt')
+	
+	/*
+	 *	Crea los usuarios, primero de forma sincronica crea un perfil, luego el usuario del perfil, y continua con el resto de los perfiles
+	 */
+	
+	var	createUserData
+	=	function(done)
+		{
+			Profile
+				.count()
+					.exec(
+						function(error,count)
+						{
+							if	(error)
+								return	done(error)
+							if	(count > 0)
+								return	done()
+
+							async
+								.eachSeries(
+									['Ventas']
+								,	function(profileName,callback)
+									{
+										Profile
+											.create(
+												{
+													name:	profileName
+												}
+											).exec(
+												function(error,profile)
+												{
+													if	(error)
+														return	done(error)
+
+													bcrypt
+														.genSalt(
+															10
+														,	function(error, salt)
+															{
+																if (error)
+																	return done(error)
+
+																var	password
+																=	profile.name.toLowerCase()
+
+																bcrypt
+																	.hash(
+																		password
+																	,	salt
+																	,	function(error, hash)
+																		{
+																			if (error)
+																				return done(error)
+
+																			User
+																				.create(
+																					{
+																						username:	profile.name.toLowerCase()
+																					,	password:	hash
+																					,	profile:	profile.id
+																					}
+																				).exec(done)
+																		}
+																	)
+															}
+														)
+												}
+											)
+									}
+								,	done
+								)			
+						}
+					)
+		}
+	
+	async
+		.parallel(
+			[
+				createUserData
+			]
+		,	cb
+		)
 };

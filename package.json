@@ -23,7 +23,9 @@
     "grunt-contrib-less": "0.11.1",
     "grunt-contrib-coffee": "~0.10.1",
     "sails-mongo": "^0.10.4",
-    "bcrypt": "^0.8.0"
+    "bcrypt": "^0.8.0",
+    "async": "^0.9.0",
+    "lodash": "^2.4.1"
   },
   "scripts": {
     "start": "node app.js",
