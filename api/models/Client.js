@@ -11,7 +11,9 @@
 
 module.exports	=	{
 
-	attributes:
+	conection:	'mongo'
+
+,	attributes:
 	{
 		nombre:
 		{

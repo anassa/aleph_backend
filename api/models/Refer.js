@@ -8,7 +8,9 @@
 
 module.exports	=	{
 
-	attributes:
+	conection:	'mongo'
+
+,	attributes:
 	{
 		//	Refer belongsTo PurchaseOrder
 		purchaseOrder:
