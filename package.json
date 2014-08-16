@@ -1,8 +1,8 @@
 {
-  "name": "saleph",
+  "name": "Aleph",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "0.0.1",
+  "description": "Una aplicación de Gestion de Ventas,  Stock y Compras",
   "keywords": [],
   "dependencies": {
     "sails": "~0.10.2",
@@ -34,8 +34,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/saleph.git"
+    "url": "https://github.com/anassa/aleph_backend.git"
   },
-  "author": "anonymous node/sails user",
+  "author": "anassa",
   "license": ""
 }

@@ -28,11 +28,11 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
-  /*  Example
+  
   localDiskDb: {
     adapter: 'sails-disk'
   },
-  */
+  
   /***************************************************************************
   *                                                                          *
   * MySQL is the world's most popular relational database.                   *
@@ -66,7 +66,7 @@ module.exports.connections = {
     // user: 'username',
     // password: 'password',
     // database: 'your_mongo_db_name_here'
-  },
+  }
 
   /***************************************************************************
   *                                                                          *
