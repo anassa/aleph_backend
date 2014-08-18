@@ -55,39 +55,15 @@ module.exports.bootstrap = function(cb) {
 												{
 													if	(error)
 														return	done(error)
-
-													bcrypt
-														.genSalt(
-															10
-														,	function(error, salt)
+																									
+													User
+														.create(
 															{
-																if (error)
-																	return done(error)
-
-																var	password
-																=	profile.name.toLowerCase()
-
-																bcrypt
-																	.hash(
-																		password
-																	,	salt
-																	,	function(error, hash)
-																		{
-																			if (error)
-																				return done(error)
-
-																			User
-																				.create(
-																					{
-																						username:	profile.name.toLowerCase()
-																					,	password:	hash
-																					,	profile:	profile.id
-																					}
-																				).exec(done)
-																		}
-																	)
+																username:	profile.name.toLowerCase()
+															,	password:	profile.name.toLowerCase()
+															,	profile:	profile.id
 															}
-														)
+														).exec(done)
 												}
 											)
 									}
