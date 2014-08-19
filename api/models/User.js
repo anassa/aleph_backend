@@ -61,7 +61,7 @@ module.exports	=	{
 			var	user
 			=	this.toObject()
 			//	Elimino el atributo password
-			delete user.password;
+			delete user.password
 			//	Devuelvo el usuario sin password
 			return user
 		}

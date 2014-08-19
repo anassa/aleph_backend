@@ -13,10 +13,14 @@ module.exports	=	{
 
 ,	attributes:
 	{
-		method:	/* 1=Efectivo - 2=Credito - 3=Debito - 4=aCuenta */
+		type:	/* 1=Efectivo - 2=Credito - 3=Debito - 4=aCuenta */
 		{
 			type:		'integer'
 		,	required:	true
+		}
+	,	descuento:
+		{
+			type:		'float'
 		}
 		//	PaymentMethod hasMany Sale
 	,	sales:
