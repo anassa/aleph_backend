@@ -75,37 +75,66 @@ module.exports.bootstrap = function(cb) {
 	,	createItems
 	=	function(done)
 		{
-			async
-				.eachSeries(
-					[
+			Item
+				.count()
+					.exec(
+						function(error,count)
 						{
-							name:			'Samsung TV EH6090'
-						,	code:			'SAMTVEH6090'
-						,	max:			20
-						,	min:			1
-						,	stock:			13
-						,	price:			5000
-						,	marketPrice: 	6300
+							if	(error)
+								return	done(error)
+							if	(count > 0)
+								return	done()
+							async
+								.eachSeries(
+									[
+										{
+											name:			'Samsung TV EH6090'
+										,	code:			'SAMTVEH6090'
+										,	max:			20
+										,	min:			1
+										,	stock:			13
+										,	price:			5000
+										,	marketPrice: 	6300
+										}
+									,	{
+											name:			'LG Home Theater 7250'
+										,	code:			'LGHT7520'
+										,	max:			20
+										,	min:			1
+										,	stock:			1
+										,	price:			7200
+										,	marketPrice: 	8500
+										}
+									,	{
+											name:			'DELL Notebook XPS 15'
+										,	code:			'DELLNBXPS15'
+										,	max:			20
+										,	min:			1
+										,	stock:			2
+										,	price:			9200
+										,	marketPrice: 	10500
+										}
+									,	{
+											name:			'Compaq Monitor W17Q'
+										,	code:			'CQMONW17Q'
+										,	max:			20
+										,	min:			1
+										,	stock:			7
+										,	price:			900
+										,	marketPrice: 	1500
+										}
+									]
+								,	function(itemData,callback)
+									{
+										Item
+											.create(
+												itemData
+											).exec(callback)
+									}
+								,	done
+								)
 						}
-					,	{
-							name:	'Samsung TV EH6030'
-						,	code:	'SAMTVEH6030'
-						,	max:			20
-						,	min:			1
-						,	stock:			3
-						,	price:			4000
-						,	marketPrice: 	53000
-						}
-					]
-				,	function(itemData,callback)
-					{
-						Item
-							.create(
-								itemData
-							).exec(callback)
-					}
-				,	done
-				)
+					)
 		}
 	
 	async
