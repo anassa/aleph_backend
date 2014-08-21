@@ -68,15 +68,51 @@ module.exports.bootstrap = function(cb) {
 											)
 									}
 								,	done
-								)			
+								)		
 						}
 					)
+		}
+	,	createItems
+	=	function(done)
+		{
+			async
+				.eachSeries(
+					[
+						{
+							name:			'Samsung TV EH6090'
+						,	code:			'SAMTVEH6090'
+						,	max:			20
+						,	min:			1
+						,	stock:			13
+						,	price:			5000
+						,	marketPrice: 	6300
+						}
+					,	{
+							name:	'Samsung TV EH6030'
+						,	code:	'SAMTVEH6030'
+						,	max:			20
+						,	min:			1
+						,	stock:			3
+						,	price:			4000
+						,	marketPrice: 	53000
+						}
+					]
+				,	function(itemData,callback)
+					{
+						Item
+							.create(
+								itemData
+							).exec(callback)
+					}
+				,	done
+				)
 		}
 	
 	async
 		.parallel(
 			[
 				createUserData
+			,	createItems
 			]
 		,	cb
 		)
