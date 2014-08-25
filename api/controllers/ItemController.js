@@ -7,5 +7,20 @@
 
 module.exports = {
 	
+	buscar: function(req,res)
+	{
+		Item
+			.count({where: {price: 5000}})
+				.exec(
+					function(err,item)
+					{
+						if	(err)
+							return	res.json(err)
+						else
+							return	res.json(item)
+					}
+				)
+	}
+
 };
 
