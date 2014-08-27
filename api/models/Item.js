@@ -21,7 +21,17 @@ module.exports	=	{
 		{
 			type:		'string'
 		}
-	,	name:
+	,	brand:
+		{
+			type:		'string'
+		,	required:	true
+		}
+	,	model:
+		{
+			type:		'string'
+		,	required:	true
+		}
+	,	type:
 		{
 			type:		'string'
 		,	required:	true

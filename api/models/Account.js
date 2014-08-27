@@ -16,7 +16,7 @@ module.exports	=	{
 		//	Account belongsTo Client
 		client:
 		{
-			model:	'Account'
+			model:	'Client'
 		}
 	}
 };

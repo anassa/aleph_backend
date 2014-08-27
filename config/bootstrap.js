@@ -88,7 +88,9 @@ module.exports.bootstrap = function(cb) {
 								.eachSeries(
 									[
 										{
-											name:			'Samsung TV EH6090'
+											brand:			'Samsung'
+										,	model:			'EH6090'
+										,	type:			'HDTV '
 										,	code:			'SAMTVEH6090'
 										,	max:			20
 										,	min:			1
@@ -97,7 +99,9 @@ module.exports.bootstrap = function(cb) {
 										,	marketPrice: 	6300
 										}
 									,	{
-											name:			'LG Home Theater 7250'
+											brand:			'LG'
+										,	model:			'7250'
+										,	type:			'Home Theater'
 										,	code:			'LGHT7520'
 										,	max:			20
 										,	min:			1
@@ -106,7 +110,9 @@ module.exports.bootstrap = function(cb) {
 										,	marketPrice: 	8500
 										}
 									,	{
-											name:			'DELL Notebook XPS 15'
+											brand:			'DELL'
+										,	model:			'XPS15'
+										,	type:			'Notebook'
 										,	code:			'DELLNBXPS15'
 										,	max:			20
 										,	min:			1
@@ -115,7 +121,9 @@ module.exports.bootstrap = function(cb) {
 										,	marketPrice: 	10500
 										}
 									,	{
-											name:			'Compaq Monitor W17Q'
+											brand:			'Compaq'
+										,	model:			'W17Q'
+										,	type:			'Monitor'
 										,	code:			'CQMONW17Q'
 										,	max:			20
 										,	min:			1
