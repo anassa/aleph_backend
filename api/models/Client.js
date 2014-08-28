@@ -15,10 +15,15 @@ module.exports	=	{
 
 ,	attributes:
 	{
-		nombre:
+		name:
 		{
 			type:		'string'
 		,	required:	true		
+		}
+	,	lastName:
+		{
+			type:		'string'
+		,	required:	true
 		}
 	,	dni_cuil:
 		{
@@ -64,7 +69,7 @@ module.exports	=	{
 			collection:	'Sale'
 		,	via:		'client'
 		}
-		//	Client hasOne Account
+			//	Client hasOne Account
 	,	account:
 		{
 			model:		'Account'
