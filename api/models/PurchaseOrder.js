@@ -9,9 +9,7 @@
 */
 module.exports	=	{
 
-	conection:	'mongo'
-
-,	attributes:
+	attributes:
 	{
 		// PurchaseOrder hasMany Refer
 		refers:

@@ -10,9 +10,7 @@
 
 module.exports	=	{
 
-	conection:	'mongo'
-
-,	attributes:
+	attributes:
 	{
 		validationDate:
 		{

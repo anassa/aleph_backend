@@ -8,9 +8,7 @@
 
 module.exports	=	{
 
-	conection:	'mongo'
-
-,	attributes:
+	attributes:
 	{	
 		//	Associations
 		//	Account belongsTo Client

@@ -11,21 +11,9 @@
 
 module.exports	=	{
 
-	conection:	'mongo'
-
-,	attributes:
+	attributes:
 	{
-		name:
-		{
-			type:		'string'
-		,	required:	true		
-		}
-	,	lastName:
-		{
-			type:		'string'
-		,	required:	true
-		}
-	,	dni_cuil:
+		dni_cuil:
 		{
 			type:		'integer'
 		,	required:	true

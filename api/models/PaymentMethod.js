@@ -9,9 +9,7 @@
 
 module.exports	=	{
 
-	conection:	'mongo'
-
-,	attributes:
+	attributes:
 	{
 		type:	/* 1=Efectivo - 2=Credito - 3=Debito - 4=aCuenta */
 		{

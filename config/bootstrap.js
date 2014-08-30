@@ -144,12 +144,55 @@ module.exports.bootstrap = function(cb) {
 						}
 					)
 		}
+	,	createClients
+	=	function(done)
+		{
+			Client
+				.count()
+					.exec(
+						function(error,count)
+						{
+							if	(error)
+								return	done(error)
+							if	(count > 0)
+								return	done()
+							async
+								.eachSeries(
+									[
+										{
+											denomination:	'Cliente 1'
+										,	dni_cuil:		12345678
+										,	address:		'Dirección 123'
+										,	phone:			23146758
+										,	email:			'cliente1@aleph.com.ar'
+										}
+									,	{
+											denomination:	'Cliente 2'
+										,	dni_cuil:		12345679
+										,	address:		'Dirección 124'
+										,	phone:			23148960
+										,	email:			'cliente2@aleph.com.ar'
+										}
+									]
+								,	function(clientData,callback)
+									{
+										Client
+											.create(
+												clientData
+											).exec(callback)
+									}
+								,	done
+								)
+						}
+					)
+		}
 	
 	async
 		.parallel(
 			[
 				createUserData
 			,	createItems
+			,	createClients
 			]
 		,	cb
 		)

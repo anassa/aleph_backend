@@ -30,9 +30,7 @@ function hashPassword(user,next)
 
 module.exports	=	{
 
-	conection:	'mongo'
-
-,	attributes:
+	attributes:
 	{
 		username:
 		{

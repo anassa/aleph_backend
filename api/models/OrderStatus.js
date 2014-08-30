@@ -8,9 +8,7 @@
 
 module.exports	=	{
 
-	conection:	'mongo'
-
-,	attributes:
+	attributes:
 	{
 		status:	/* 1=Cumplida - 2=Vencida - 3=En Curso */
 		{
