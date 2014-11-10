@@ -20,8 +20,6 @@ module.exports.bootstrap = function(cb) {
 
 	var	async
 	=	require('async')
-	,	bcrypt
-	=	require('bcrypt')
 	
 	/*
 	 *	Crea los usuarios, primero de forma sincronica crea un perfil, luego el usuario del perfil, y continua con el resto de los perfiles
