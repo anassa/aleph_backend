@@ -18,22 +18,40 @@ module.exports	=	{
 						{
 							//	Si ocurrio un error envio un mensaje notificandolo
 							if	(err)
-								res.json({message: 'Error en la DB.'},500)
+								res.json(
+									{
+										field:		'server'
+									,	message:	'Error en la DB.'
+									}
+								,	500
+								)
 							//	Si existe el usuario
 							if	(user)
 								//	Comparo las constraseña con la del usuario cifrada
 								if	(user.validPassword(req.body.password)) {
-									req.session.user = user.id
+									req.session.user = user
 									req.session.authenticated = true
 									delete user.password
 									res.json(user)
 								}
 								//	Si no coinciden envio un mensaje notificandolo.
 								else
-									res.json({message: 'Contraseña incorrecta.'},400)
+									res.json(
+										{
+											field:		'password'
+										,	message:	'Contraseña incorrecta.'
+										}
+									,	400
+									)
 							//	Sino existe el usuario envio un mensaje notificando que no existe
 							else
-								res.json({message: 'Nombre de usuario incorrecto.'},404)
+								res.json(
+									{
+										field:		'username'
+									,	message:	'Nombre de usuario incorrecto.'
+									}
+								,	404
+								)
 						}
 					)
 	}
@@ -48,30 +66,51 @@ module.exports	=	{
 			res.json({message: 'No se encontró una sesión activa'},404)
 	}
 
-,	validatePassword: function(req,res)
+,	updatePassword: function(req,res)
 	{
+		//	Obtengo la data del formulario
+		var	formData
+		=	req.allParams()
 		//	Busco el usuario que tenga el username solicitado
 		User
-			.findOneByUsername(req.body.username)
-				.exec(
-					function(err,user)
-					{
-						//	Si ocurrio un error envio un mensaje notificandolo
-						if	(err)
-							res.json({valid: false})
-						//	Si existe el usuario comparo las constraseña con la del usuario cifrada
-						if	(user)
-							if	(user.validPassword(req.body.currentPassword))
-								//	Si coinciden envio el mensaje que es valida
-								res.json({valid: true})
-							//	Si no coinciden envio un mensaje notificandolo.
-							else
-								res.json({valid: false})
-						//	Si no existe el usuario envio un mensaje notificando que no existe
-						else
-							res.json({valid: false})
-					}
+			.findOne(
+				_.pick(
+					formData
+				,	'id'
 				)
+			)
+			.exec(
+				function(err,user)
+				{
+					//	Si ocurrio un error envio un mensaje notificandolo
+					if	(err)
+						res.json(err)
+					//	Comparo las constraseña con la del usuario
+					if	(user.validPassword(formData.currentPassword)) {
+						//	Cambio la password del usuario
+						user.password = formData.newPassword
+						//	Guardo el usuario
+						user
+							.save(
+								function(err, savedUser)
+								{
+									//	Si ocurrio un error envio un mensaje notificandolo
+									if	(err)
+										res.json(err)
+									//	Devuelvo el usuario guardado
+									return	res.json(savedUser)
+								}
+							)
+					}	else
+						return	res.json(404, {valid: false})
+							
+				}
+			)
+	}
+
+,	current: function(req, res)
+	{
+		return	res.json(req.session.user)
 	}
 
 };

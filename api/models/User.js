@@ -19,7 +19,7 @@ module.exports	=	{
 		{
 			type:		'string'
 		,	required:	true
-		,	minLength:	6
+		,	minLength:	5
 		}
 	,	name:
 		{
@@ -47,6 +47,14 @@ module.exports	=	{
 			=	this.toObject()
             //  Devuelvo la clave es valida
             return  user.password === password
+		}
+	,	getProfile: function()
+		{
+			//	Obtengo el usuario como objeto
+			var	user
+			=	this.toObject()
+			//	Devuelvo el profile del usuario
+			return	user.profile.name
 		}
 	}
 }

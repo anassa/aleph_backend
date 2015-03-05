@@ -11,12 +11,21 @@
 
 module.exports.models = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Your app's default connection. i.e. the name of one of your app's        *
-  * connections (see `config/connections.js`)                                *
-  *                                                                          *
-  ***************************************************************************/
+	/***************************************************************************
+	*                                                                          *
+	* Your app's default connection. i.e. the name of one of your app's        *
+	* connections (see `config/connections.js`)                                *
+	*                                                                          *
+	***************************************************************************/
 
-  connection: 'mongo'
+	connection: 'mongo'
+
+	/***************************************************************************
+	*                                                                          *
+	* Your app's default migration.                                            *
+	* connections (see `config/connections.js`)                                *
+	*                                                                          *
+	***************************************************************************/
+
+,	migrate:	'safe'
 };

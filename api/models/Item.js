@@ -12,6 +12,19 @@
 */
 
 module.exports	=	{
+	/*
+		{
+			name:			'Conos de Poliester'
+		,	type:			'Hilo'
+		,	code:			'AAA001'
+		,	unit:			'200 Gramos'
+		,	max:			20
+		,	min:			1
+		,	stock:			13
+		,	price:			130
+		,	marketPrice: 	160
+		}
+	*/
 
 	attributes:
 	{
@@ -19,17 +32,17 @@ module.exports	=	{
 		{
 			type:		'string'
 		}
-	,	brand:
-		{
-			type:		'string'
-		,	required:	true
-		}
-	,	model:
+	,	name:
 		{
 			type:		'string'
 		,	required:	true
 		}
 	,	type:
+		{
+			type:		'string'
+		,	required:	true
+		}
+	,	code:
 		{
 			type:		'string'
 		,	required:	true

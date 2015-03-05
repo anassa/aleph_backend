@@ -38,35 +38,48 @@ module.exports.bootstrap = function(cb) {
 							if	(count > 0)
 								return	done()
 
-							async
-								.eachSeries(
-									['Ventas']
-								,	function(profileName,callback)
+							Profile
+								.create(
+									[
+										{
+											name: 	'Ventas'
+										,	sector:	'sales'
+										}
+									,	{
+											name: 	'Compras'
+										,	sector:	'purchases'
+										}
+									,	{
+											name: 	'Stock'
+										,	sector:	'stock'
+										}
+									,	{
+											name: 	'Administrador'
+										,	sector:	'admin'
+										}
+									]
+								).exec(
+									function(error,profiles)
 									{
-										Profile
+										if	(error)
+											return	done(error)
+																						
+										User
 											.create(
-												{
-													name:	profileName
-												}
-											).exec(
-												function(error,profile)
-												{
-													if	(error)
-														return	done(error)
-																									
-													User
-														.create(
-															{
-																username:	profile.name.toLowerCase()
-															,	password:	profile.name.toLowerCase()
-															,	profile:	profile.id
-															}
-														).exec(done)
-												}
-											)
+												_.map(
+													profiles
+												,	function(profile)
+													{
+														return	{
+																	username:	profile.name.toLowerCase()
+																,	password:	profile.name.toLowerCase()
+																,	profile:	profile.id
+																}
+													}
+												)												
+											).exec(done)
 									}
-								,	done
-								)		
+								)	
 						}
 					)
 		}
@@ -82,63 +95,56 @@ module.exports.bootstrap = function(cb) {
 								return	done(error)
 							if	(count > 0)
 								return	done()
-							async
-								.eachSeries(
+
+							Item
+								.create(
 									[
 										{
-											brand:			'Samsung'
-										,	model:			'EH6090'
-										,	type:			'HDTV '
-										,	code:			'SAMTVEH6090'
+											name:			'Conos de Poliester'
+										,	type:			'Hilo'
+										,	code:			'AAA001'
+										,	unit:			'200 Gramos'
 										,	max:			20
 										,	min:			1
 										,	stock:			13
-										,	price:			5000
-										,	marketPrice: 	6300
+										,	price:			130
+										,	marketPrice: 	160
 										}
 									,	{
-											brand:			'LG'
-										,	model:			'7250'
-										,	type:			'Home Theater'
-										,	code:			'LGHT7520'
+											name:			'Cinta de Raso 50mm'
+										,	type:			'Cinta de Raso'
+										,	code:			'AAA002'
+										,	unit:			'10 Metros'
 										,	max:			20
 										,	min:			1
 										,	stock:			1
-										,	price:			7200
-										,	marketPrice: 	8500
+										,	price:			120
+										,	marketPrice: 	155
 										}
 									,	{
-											brand:			'DELL'
-										,	model:			'XPS15'
-										,	type:			'Notebook'
-										,	code:			'DELLNBXPS15'
+											name:			'Tachas 9.5 mm + Aplicador'
+										,	type:			'Pack'
+										,	code:			'OFE001'
+										,	unit:			'20 Unidades'
 										,	max:			20
 										,	min:			1
-										,	stock:			2
-										,	price:			9200
-										,	marketPrice: 	10500
+										,	stock:			17
+										,	price:			70
+										,	marketPrice: 	85
 										}
 									,	{
-											brand:			'Compaq'
-										,	model:			'W17Q'
-										,	type:			'Monitor'
-										,	code:			'CQMONW17Q'
+											name:			'Botones Numero 24'
+										,	type:			'Botones'
+										,	code:			'AAA003'
+										,	unit:			'100 Unidades'
 										,	max:			20
 										,	min:			1
-										,	stock:			7
-										,	price:			900
-										,	marketPrice: 	1500
+										,	stock:			17
+										,	price:			100
+										,	marketPrice: 	125
 										}
 									]
-								,	function(itemData,callback)
-									{
-										Item
-											.create(
-												itemData
-											).exec(callback)
-									}
-								,	done
-								)
+								).exec(done)
 						}
 					)
 		}
@@ -154,8 +160,9 @@ module.exports.bootstrap = function(cb) {
 								return	done(error)
 							if	(count > 0)
 								return	done()
-							async
-								.eachSeries(
+
+							Client
+								.create(
 									[
 										{
 											denomination:	'Cliente 1'
@@ -172,15 +179,7 @@ module.exports.bootstrap = function(cb) {
 										,	email:			'cliente2@aleph.com.ar'
 										}
 									]
-								,	function(clientData,callback)
-									{
-										Client
-											.create(
-												clientData
-											).exec(callback)
-									}
-								,	done
-								)
+								).exec(done)
 						}
 					)
 		}
