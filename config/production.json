@@ -1,11 +1,12 @@
 {
-  "host": "aleph-app.feathersjs.com",
-  "port": 80,
-  "mongodb": "DATABASE_URL",
+  "host": "localhost",
+  "enviroment": "prod",
+  "port": 3030,
+  "mongodb": "mongodb://localhost:27017/aleph",
   "public": "../public/",
   "auth": {
     "token": {
-      "secret": "FEATHERS_AUTH_SECRET"
+      "secret": "bHC+IKXHbbt74u2UvJfRHO4zzOIalexWoeOoOVg0Ks+/YKo3rDaOfKNBYP6JuI9rON/5o2tv719D9ZuWjuGu7Q=="
     },
     "local": {}
   }
