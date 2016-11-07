@@ -28,7 +28,7 @@ const articulos = require('./articulos');
 
 const alarmas = require('./alarmas');
 
-const authentication = require('./authentication');
+//const authentication = require('./authentication');
 const mongoose = require('mongoose');
 
 module.exports = function() {
@@ -37,7 +37,7 @@ module.exports = function() {
   mongoose.connect(app.get('mongodb'));
   mongoose.Promise = global.Promise;
 
-  app.configure(authentication);
+  //app.configure(authentication);
   app.configure(alarmas);
   app.configure(articulos);
   app.configure(clientes);
