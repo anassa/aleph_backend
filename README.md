@@ -1,41 +1,51 @@
-Aleph Backend
-=============
+# aleph
 
-## Requerimientos
-1.  MongoDB ~2.6
-2.  NodeJS ~0.10.26
-3.  Git
-4.  SailsJS
+> Gestion de Compras, ventas y stock.
 
-### Configurando Mongo DB
+## Primeros pasos
 
-1.  [Descargamos](http://www.mongodb.org/downloads) la versión que corresponda según nuestro sistema operativo.
-2.  Instalamos lo descargado.
+1. Instalar NodeJS [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/).
+2. Instalar las dependencias
+    
+    ```
+    cd path/to/aleph; npm install
+    ```
+3. Instalar [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#install-mongodb-community-edition).
+4. Restablecer la base da datos
+    
+    ```
+    npm run seed
+    ```
 
-### Configurando NodeJS
+5. Iniciar la app
+    
+    ```
+    npm start
+    ```
 
-1.  [Descargamos](http://nodejs.org/download/) la versión que corresponda según nuestro sistema operativo.
-2.  Instalamos lo descargado.
+## Pruebas
 
-### Configurando Git
+Utilizar el comando `npm test` y se ejecutaran todas las pruebas en el directorio `test/`.
 
-1.  [Descargamos](http://git-scm.com/download/win) la versión que corresponda según nuestro sistema operativo.
-2.  Instalamos lo descargado, utilizando los parámetros por defectos propuestos por el instalador.
-3.  Abrimos Git Bash (desde el escritorio o bien desde el menú inicio).
-4.  Utilizando el Git Bash nos dirigimos al lugar donde vamos a guardar la aplicación, por ejemplo, cd *C:\Proyecto*.
-5.  Clonamos el backend utilizando el comando *git clone https://github.com/anassa/aleph_backend aleph* (al clonar se creara una carpeta llamada aleph en el directorio donde nos encontremos, la cual contendrá el backend de aleph).
-6.  Ingresamos a la carpeta aleph utilizando el comando *cd aleph*
-7.  Clonamos el frontend utilizando el comando *git clone https://github.com/anassa/aleph_frontend -b produccion assets* (al clonar se creara una carpetea en aleph llamada assets que contendrá la versión de producción del frontend de aleph).
+## Generadores
 
-### Configurando Sails
+El proyecto utiliza el framework feathersjs, estos son algunos comandos disponibles:
 
-1.  Abrimos un Git Bash (desde el escritorio o bien desde el menú inicio).
-2.  Instalamos SailsJS utilizando el comando *npm install -g sails*.
+```
+$ npm install -g feathers-cli             # Instala Feathers CLI
 
-### Iniciando la aplicación
+$ feathers generate service               # Genera un nuevo [Service](https://docs.feathersjs.com/services/readme.html)
+$ feathers generate hook                  # Genera un nuevo [Hook](https://docs.feathersjs.com/hooks/readme.html)
+$ feathers generate model                 # Genera un nuevo [Model](https://docs.feathersjs.com/databases/mongoose.html)
+$ feathers help                           # Muestra todos los comandos disponbiles
+```
 
-1.  Utilizando la consola (cmd) ejecutamos el archivo mongod.exe que se encuentra en la carpeta bin del directorio de instalación. Por defecto, *C:\Archivos de Programa\MongoDB\bin\mongod.exe*.
-2.  Utilizando Git Bash nos dirigimos a la carpeta aleph
-3.  ATENCIÓN: Solo realizar este pasó la primera vez. Utilizamos el commando node init.
-4.  Utilizamos el comando *sails lift*
-5.  Utilizando un navegador decente (Chrome o Firefox) accedemos a http://localhost:1337/
+__0.1.0__
+
+- Primer release
+
+## Licencia
+
+Derecho de copia (c) 2016
+
+Licensiado bajo [MIT license](LICENSE).
