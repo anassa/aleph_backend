@@ -8,11 +8,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const formasDePagoSchema = new Schema({
-  text: { type: String, required: true },
-  createdAt: { type: Date, 'default': Date.now },
-  updatedAt: { type: Date, 'default': Date.now }
-});
+const formasDePagoSchema = new Schema(
+	{
+		createdAt:	{ type: Date, 'default': Date.now }
+	,	updatedAt:	{ type: Date, 'default': Date.now }
+	}
+,	{
+		strict:		false
+	}
+);
 
 const formasDePagoModel = mongoose.model('formasDePago', formasDePagoSchema);
 

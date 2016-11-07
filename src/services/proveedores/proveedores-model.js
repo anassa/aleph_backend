@@ -8,11 +8,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const proveedoresSchema = new Schema({
-  text: { type: String, required: true },
-  createdAt: { type: Date, 'default': Date.now },
-  updatedAt: { type: Date, 'default': Date.now }
-});
+const proveedoresSchema = new Schema(
+	{
+		createdAt:	{ type: Date, 'default': Date.now }
+	,	updatedAt:	{ type: Date, 'default': Date.now }
+	}
+,	{
+		strict:		false
+	}
+);
 
 const proveedoresModel = mongoose.model('proveedores', proveedoresSchema);
 

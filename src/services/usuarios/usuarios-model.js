@@ -8,11 +8,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const usuariosSchema = new Schema({
-  text: { type: String, required: true },
-  createdAt: { type: Date, 'default': Date.now },
-  updatedAt: { type: Date, 'default': Date.now }
-});
+const usuariosSchema = new Schema(
+	{
+		createdAt:	{ type: Date, 'default': Date.now }
+	,	updatedAt:	{ type: Date, 'default': Date.now }
+	}
+,	{
+		strict:		false
+	}
+);
 
 const usuariosModel = mongoose.model('usuarios', usuariosSchema);
 

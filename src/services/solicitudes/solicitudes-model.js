@@ -8,11 +8,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const solicitudesSchema = new Schema({
-  text: { type: String, required: true },
-  createdAt: { type: Date, 'default': Date.now },
-  updatedAt: { type: Date, 'default': Date.now }
-});
+const solicitudesSchema = new Schema(
+	{
+		createdAt:	{ type: Date, 'default': Date.now }
+	,	updatedAt:	{ type: Date, 'default': Date.now }
+	}
+,	{
+		strict:		false
+	}
+);
 
 const solicitudesModel = mongoose.model('solicitudes', solicitudesSchema);
 

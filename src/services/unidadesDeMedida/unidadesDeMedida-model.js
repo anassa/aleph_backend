@@ -8,12 +8,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const unidadesDeMedidaSchema = new Schema({
-  text: { type: String, required: true },
-  createdAt: { type: Date, 'default': Date.now },
-  updatedAt: { type: Date, 'default': Date.now }
-});
-
+const unidadesDeMedidaSchema = new Schema(
+	{
+		createdAt:	{ type: Date, 'default': Date.now }
+	,	updatedAt:	{ type: Date, 'default': Date.now }
+	}
+,	{
+		strict:		false
+	}
+);
 const unidadesDeMedidaModel = mongoose.model('unidadesDeMedida', unidadesDeMedidaSchema);
 
 module.exports = unidadesDeMedidaModel;

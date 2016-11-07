@@ -8,11 +8,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const remitosSchema = new Schema({
-  text: { type: String, required: true },
-  createdAt: { type: Date, 'default': Date.now },
-  updatedAt: { type: Date, 'default': Date.now }
-});
+const remitosSchema = new Schema(
+	{
+		createdAt:	{ type: Date, 'default': Date.now }
+	,	updatedAt:	{ type: Date, 'default': Date.now }
+	}
+,	{
+		strict:		false
+	}
+);
 
 const remitosModel = mongoose.model('remitos', remitosSchema);
 
