@@ -1,3 +1,6 @@
 [submodule "assets"]
 	path = assets
 	url = https://github.com/anassa/aleph_frontend.git
+[submodule "public"]
+	path = public
+	url = https://github.com/anassa/aleph_frontend
