@@ -16,10 +16,10 @@ module.exports = function() {
   };
 
   // Initialize our service with any options it requires
-  app.use('/alarmas', service(options));
+  app.use('/api/alarmas', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const alarmasService = app.service('/alarmas');
+  const alarmasService = app.service('/api/alarmas');
 
   // Set up our before hooks
   alarmasService.before(hooks.before);
