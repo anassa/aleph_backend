@@ -19,10 +19,12 @@ const services = require('./services');
 const authPolicy = {
 	local:
 	{
-		usernameField:	'nombre'
-	,	passwordField:	'pass'
+		usernameField:	'username'
+	,	passwordField:	'password'
 	}
-,	userEndpoint:		'/api/usuarios'
+,	userEndpoint:	'/api/usuarios'
+,	shouldSetupFailureRoute:	false
+,	shouldSetupSuccessRoute:	false
 };
 
 
@@ -43,20 +45,19 @@ app.use(compress())
 	.configure(authentication(authPolicy))
 	.configure(services)
 	.configure(middleware);
-
+/*
 var userService = app.service('/api/usuarios');
 
 // Create a user that we can use to log in
 var AdminUser
 =	{
-		nombre:		'admin'
-	,	pass:		'drowssap16'
+		username:	'admin'
+	,	password:	'admin'
 	,	permisos:	['admin']
 };
 
 userService.create(AdminUser, {}).then(function(user) {
   console.log('Admin spawned');
 });
-
-
+*/
 module.exports = app;

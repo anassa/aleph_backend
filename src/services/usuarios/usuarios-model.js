@@ -10,7 +10,9 @@ const Schema = mongoose.Schema;
 
 const usuariosSchema = new Schema(
 	{
-		createdAt:	{ type: Date, 'default': Date.now }
+		username:	{ type: String }
+	,	password:	{ type: String }
+	,	createdAt:	{ type: Date, 'default': Date.now }
 	,	updatedAt:	{ type: Date, 'default': Date.now }
 	}
 ,	{
