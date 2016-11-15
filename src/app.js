@@ -45,18 +45,5 @@ app.use(compress())
 	.configure(authentication(authPolicy))
 	.configure(services)
 	.configure(middleware);
-/*
-var userService = app.service('usuarios');
 
-var AdminUser
-=	{
-		username:	'admin'
-	,	password:	'admin'
-	,	permisos:	['admin']
-};
-
-userService.create(AdminUser, {}).then(function(user) {
-  console.log('Admin spawned');
-});
-*/
 module.exports = app;

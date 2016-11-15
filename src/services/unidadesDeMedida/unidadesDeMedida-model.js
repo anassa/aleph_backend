@@ -10,7 +10,8 @@ const Schema = mongoose.Schema;
 
 const unidadesDeMedidaSchema = new Schema(
 	{
-		createdAt:	{ type: Date, 'default': Date.now }
+		nombre:		{type: String }
+	,	createdAt:	{ type: Date, 'default': Date.now }
 	,	updatedAt:	{ type: Date, 'default': Date.now }
 	}
 ,	{
