@@ -16,10 +16,10 @@ module.exports = function() {
   };
 
   // Initialize our service with any options it requires
-  app.use('/api/permisos', service(options));
+  app.use('permisos', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const permisosService = app.service('/api/permisos');
+  const permisosService = app.service('permisos');
 
   // Set up our before hooks
   permisosService.before(hooks.before);

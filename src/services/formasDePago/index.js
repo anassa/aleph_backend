@@ -16,10 +16,10 @@ module.exports = function() {
   };
 
   // Initialize our service with any options it requires
-  app.use('/api/formasDePagos', service(options));
+  app.use('formasDePagos', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const formasDePagoService = app.service('/api/formasDePagos');
+  const formasDePagoService = app.service('formasDePagos');
 
   // Set up our before hooks
   formasDePagoService.before(hooks.before);

@@ -22,7 +22,7 @@ const authPolicy = {
 		usernameField:	'username'
 	,	passwordField:	'password'
 	}
-,	userEndpoint:	'/api/usuarios'
+,	userEndpoint:	'usuarios'
 ,	shouldSetupFailureRoute:	false
 ,	shouldSetupSuccessRoute:	false
 };
@@ -46,9 +46,8 @@ app.use(compress())
 	.configure(services)
 	.configure(middleware);
 /*
-var userService = app.service('/api/usuarios');
+var userService = app.service('usuarios');
 
-// Create a user that we can use to log in
 var AdminUser
 =	{
 		username:	'admin'

@@ -16,10 +16,10 @@ module.exports = function() {
   };
 
   // Initialize our service with any options it requires
-  app.use('/api/unidadesDeMedidas', service(options));
+  app.use('unidadesDeMedidas', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const unidadesDeMedidaService = app.service('/api/unidadesDeMedidas');
+  const unidadesDeMedidaService = app.service('unidadesDeMedidas');
 
   // Set up our before hooks
   unidadesDeMedidaService.before(hooks.before);

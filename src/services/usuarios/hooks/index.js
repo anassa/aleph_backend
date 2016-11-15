@@ -15,10 +15,16 @@ exports.before = {
 ,	get:	[]
 ,	create:
 	[
-		auth.hashPassword('pass')
+		auth.hashPassword('password')
 	]
-,	update:	[]
-,	patch:	[]
+,	update:
+	[
+		auth.hashPassword('password')
+	]
+,	patch:
+	[
+		auth.hashPassword('password')
+	]
 ,	remove:	[]
 };
 
