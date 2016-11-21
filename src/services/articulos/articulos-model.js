@@ -31,7 +31,6 @@ const articulosSchema = new Schema(
 	,	precioVenta:	{ type: Number }
 	,	precioCosto:	{ type: Number }
 	,	descuento:		{ type: Number }
-	,	ajuste:			{ type: Number }
 	,	proveedores:	{ type: Array }
 	//,	alarmaMax:		{ type: Number, required: true }
 	//,	alarmaMin:		{ type: Number, required: true }
