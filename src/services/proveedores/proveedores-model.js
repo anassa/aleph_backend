@@ -10,7 +10,14 @@ const Schema = mongoose.Schema;
 
 const proveedoresSchema = new Schema(
 	{
-		createdAt:	{ type: Date, 'default': Date.now }
+		denominacion:	{ type: String, unique : true, required: true }
+	,	dni_cuit:		{ type: String, unique : true, required: true }
+	,	cuenta:
+		{
+			codigo:			{ type: Number, unique : true }
+		,	montoLimite:	{ type: Number}
+		}
+	,	createdAt:	{ type: Date, 'default': Date.now }
 	,	updatedAt:	{ type: Date, 'default': Date.now }
 	}
 ,	{
