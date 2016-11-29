@@ -15,7 +15,7 @@ const proveedoresSchema = new Schema(
 	,	dni_cuit:		{ type: String, unique : true, required: true }
 	,	cuenta:
 		{
-			codigo:			{ type: Number, unique : true }
+			codigo:			{ type: Number}
 		,	montoLimite:	{ type: Number}
 		}
 	,	createdAt:	{ type: Date, 'default': Date.now }
