@@ -6,6 +6,7 @@
 // for more of what you can do here.
 
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence');
 const Schema = mongoose.Schema;
 
 const proveedoresSchema = new Schema(
@@ -25,6 +26,7 @@ const proveedoresSchema = new Schema(
 	}
 );
 
+proveedoresSchema.plugin(AutoIncrement, {inc_field: 'cuenta.codigo'});
 const proveedoresModel = mongoose.model('proveedores', proveedoresSchema);
 
 module.exports = proveedoresModel;
