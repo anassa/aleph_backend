@@ -42,7 +42,7 @@ const articulosSchema = new Schema(
 	}
 );
 
-articulosSchema.plugin(AutoIncrement, {inc_field: 'codigo'});
+articulosSchema.plugin(AutoIncrement, {id:'articulos_counter', inc_field: 'codigo'});
 const articulosModel = mongoose.model('articulos', articulosSchema);
 
 module.exports = articulosModel;
