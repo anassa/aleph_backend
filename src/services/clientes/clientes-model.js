@@ -45,12 +45,11 @@ const clientesSchema = new Schema(
 			,	username:	{ type: String }
 			,	permisos:	{ type: Array}
 		}
-		,fechaAlta: { type: Date, 'default': Date.now }
 		,nombre: { type: String, required: true}
 		,apellido: { type: String, required: true}
 		,dni: { type: Number, required: true, unique : true }
 		,domicilio: { type: String }
-		,telefono: { type: Number }
+		,telefono: { type: String }
 		,mail: { type: String }
 		,cuenta: cuentasSchema
 		,createdAt:	{ type: Date, 'default': Date.now }
