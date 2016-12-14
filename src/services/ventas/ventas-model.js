@@ -12,6 +12,11 @@ const ventasSchema = new Schema(
 	{
 		createdAt:	{ type: Date, 'default': Date.now }
 	,	updatedAt:	{ type: Date, 'default': Date.now }
+	,	formaPago:
+		{
+			interes: { type: Number}
+		,	cuotas:  { type: Number}	
+		}
 	}
 ,	{
 		strict:		false
