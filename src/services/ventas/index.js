@@ -11,7 +11,7 @@ module.exports = function() {
 	const options = {
 		Model: ventas,
 		paginate: {
-			default: 5,
+			default: 10,
 			max: 25
 		}
 	};
