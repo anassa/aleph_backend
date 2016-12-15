@@ -45,15 +45,18 @@ module.exports = function() {
 										$inc: { stock: -art.cantidad }
 									}
 								).then(
-									function()
+									function(a)
 									{
+										var i = hook.data.articulos.indexOf(art);
+										hook.data.articulos[i].sotck = a.stock
 										cb()
 									}
 								,	cb
 								)
 						}
-					,	function(err)
+					,	function(err, a)
 						{
+							console.log(a)
 							next(err || null, hook);
 						}
 				);
