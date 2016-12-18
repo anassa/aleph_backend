@@ -6,6 +6,7 @@
 // for more of what you can do here.
 
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence');
 const Schema = mongoose.Schema;
 
 const ordenesDeCompraSchema = new Schema(
@@ -18,6 +19,7 @@ const ordenesDeCompraSchema = new Schema(
 	}
 );
 
+ordenesDeCompraSchema.plugin(AutoIncrement, {id:'ordenesDeCompra_counter', inc_field: 'numero'});
 const ordenesDeCompraModel = mongoose.model('ordenesDeCompra', ordenesDeCompraSchema);
 
 module.exports = ordenesDeCompraModel;
