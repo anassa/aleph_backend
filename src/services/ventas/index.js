@@ -48,7 +48,7 @@ module.exports = function() {
 									function(a)
 									{
 										var i = hook.data.articulos.indexOf(art);
-										hook.data.articulos[i].sotck = a.stock
+										hook.data.articulos[i].stock = a.stock
 										cb()
 									}
 								,	cb
