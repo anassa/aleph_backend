@@ -1,5 +1,6 @@
 'use strict';
 
+const async = require('async');
 const service = require('feathers-mongoose');
 const proveedores = require('./proveedores-model');
 const hooks = require('./hooks');
@@ -21,6 +22,7 @@ module.exports = function() {
 	// Get our initialize service to that we can bind hooks
 	const proveedoresService = app.service('proveedores');
 	const cuentasService = app.service('cuentas');
+	const articulosService = app.service('articulos');
 
 	// Set up our before hooks
 	proveedoresService.before(hooks.before);
@@ -108,4 +110,117 @@ module.exports = function() {
 	
 	// Set up our after hooks
 	proveedoresService.after(hooks.after);
+
+	proveedoresService.after(
+		{
+			create: function(hook, next)
+			{
+				async
+					.each(
+						hook.data.articulos
+					,	function(art, cb)
+						{
+							articulosService
+								.patch(
+									art._id
+								,	{
+										$push:
+										{
+											proveedores:
+											{
+												_id: hook.result.id
+											,	dni_cuit: hook.data.dni_cuit
+											,	denominacion: hook.data.denominacion
+											}
+										}
+									}
+								).then(
+									function(a)
+									{
+										cb()
+									}
+								,	cb
+								)
+						}
+					,	function(err, a)
+						{
+							next(err || null, hook);
+						}
+				);
+			}
+
+		,	update: function(hook, next)
+			{
+				async
+					.each(
+						hook.data.articulos
+					,	function(art, cb)
+						{
+							articulosService
+								.patch(
+									art._id
+								,	{
+										$addToSet:
+										{
+											proveedores:
+											{
+												_id: hook.result.id
+											,	dni_cuit: hook.data.dni_cuit
+											,	denominacion: hook.data.denominacion
+											}
+										}
+									}
+								).then(
+									function(a)
+									{
+										cb()
+									}
+								,	cb
+								)
+						}
+					,	function(err, a)
+						{
+							next(err || null, hook);
+						}
+				);
+			}
+
+		,	remove: function(hook, next)
+			{
+				async
+					.each(
+						hook.data.articulos
+					,	function(art, cb)
+						{
+							articulosService
+								.patch(
+									art._id
+								,	{
+										$pull:
+										{
+											proveedores:
+											{
+												_id: hook.result.id
+											,	dni_cuit: hook.data.dni_cuit
+											,	denominacion: hook.data.denominacion
+											}
+										}
+									}
+								).then(
+									function(a)
+									{
+										cb()
+									}
+								,	cb
+								)
+						}
+					,	function(err, a)
+						{
+							next(err || null, hook);
+						}
+				);
+			}
+
+		}
+	);
 };
