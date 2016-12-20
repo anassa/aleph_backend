@@ -26,39 +26,4 @@ module.exports = function() {
 
 	// Set up our after hooks
 	articulosService.after(hooks.after);
-
-	articulosService.after(
-		{
-			create: function(hook, next)
-			{
-				async
-					.each(
-						hook.data.articulos
-					, function(art, cb)
-						{
-							articulosService
-								.patch(
-									art._id
-								, {
-										$inc: { stock: -art.cantidad }
-									}
-								).then(
-									function(a)
-									{
-										var i = hook.data.articulos.indexOf(art);
-										hook.data.articulos[i].stock = a.stock
-										cb()
-									}
-								, cb
-								)
-						}
-					, function(err, a)
-						{
-							console.log(a)
-							next(err || null, hook);
-						}
-				);
-			}
-		}
-	);
 };
