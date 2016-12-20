@@ -50,14 +50,29 @@ module.exports = function() {
 			{
 				if (hook.data.cuenta) {
 
-					cuentasService.patch(hook.data.cuenta._id,hook.data.cuenta)
-						.then(
-							function(result)
-							{
-								hook.data.cuenta = result;
-								next(null, hook);
-							}
-						);
+					if (hook.data.cuenta._id) {
+
+						cuentasService.patch(hook.data.cuenta._id,hook.data.cuenta)
+							.then(
+								function(result)
+								{
+									hook.data.cuenta = result;
+									next(null, hook);
+								}
+							);
+
+					}	else	{
+
+						cuentasService.create(hook.data.cuenta)
+							.then(
+								function(result)
+								{
+									hook.data.cuenta = result;
+									next(null, hook);
+								}
+							);
+
+					}
 
 				} else {
 
