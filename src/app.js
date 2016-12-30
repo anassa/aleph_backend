@@ -10,23 +10,15 @@ const configuration = require('feathers-configuration');
 const hooks = require('feathers-hooks');
 const rest = require('feathers-rest');
 const bodyParser = require('body-parser');
-const authentication = require('feathers-authentication');
+const local = require('feathers-authentication-local');
+const jwt = require('feathers-authentication-jwt');
+const auth = require('feathers-authentication');
 const socketio = require('feathers-socketio');
 const middleware = require('./middleware');
 const services = require('./services');
+const policy = require('./auth');
 
-//	Auth policy configuration
-const authPolicy = {
-	local:
-	{
-		usernameField:	'username'
-	,	passwordField:	'password'
-	}
-,	userEndpoint:	'usuarios'
-,	shouldSetupFailureRoute:	false
-,	shouldSetupSuccessRoute:	false
-};
-
+console.log(policy)
 
 const app = feathers();
 
@@ -42,7 +34,9 @@ app.use(compress())
 	.configure(hooks())
 	.configure(rest())
 	.configure(socketio())
-	.configure(authentication(authPolicy))
+	.configure(auth(policy.auth))
+	.configure(local(policy.local))
+	.configure(jwt())
 	.configure(services)
 	.configure(middleware);
 
