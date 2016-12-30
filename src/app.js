@@ -18,8 +18,6 @@ const middleware = require('./middleware');
 const services = require('./services');
 const policy = require('./auth');
 
-console.log(policy)
-
 const app = feathers();
 
 app.configure(configuration(path.join(__dirname, '..')));
@@ -39,5 +37,24 @@ app.use(compress())
 	.configure(jwt())
 	.configure(services)
 	.configure(middleware);
+
+app
+	.service('authentication')
+		.hooks(
+			{
+				before:
+				{
+					create:
+					[
+						// You can chain multiple strategies
+						auth.hooks.authenticate(['jwt', 'local'])
+					]
+				,	remove:
+					[
+						auth.hooks.authenticate('jwt')
+					]
+				}
+			}
+		);
 
 module.exports = app;

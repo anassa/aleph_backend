@@ -62,7 +62,5 @@ module.exports = {
 	,	passReqToCallback: true
 		// whether to use sessions
 	,	session: false
-		// A Verifier class. Defaults to the built-in one but can be a custom one. See below for details.
-	,	Verifier: Verifier 
 	}
 }

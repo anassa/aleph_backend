@@ -36,6 +36,7 @@
     "feathers-errors": "^2.4.0",
     "feathers-hooks": "^1.5.7",
     "feathers-mongoose": "^3.5.2",
+    "feathers-permissions": "^0.1.1",
     "feathers-rest": "^1.5.0",
     "feathers-socketio": "^1.4.1",
     "mongodb-backup": "^1.6.5",

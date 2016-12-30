@@ -2,28 +2,30 @@
 
 const globalHooks = require('../../../hooks');
 const hooks = require('feathers-hooks');
-const auth = require('feathers-authentication').hooks;
+const auth = require('feathers-authentication');
+const local = require('feathers-authentication-local');
+const permissions = require('feathers-permissions');
 
 exports.before = {
 	all:
 	[
-		auth.verifyToken()
-	,	auth.populateUser()
-	,	auth.restrictToAuthenticated()
+		auth.hooks.authenticate('jwt')
+//	,	permissions.hooks.checkPermissions({ service: 'users' })
+	,	permissions.hooks.isPermitted()
 	]
 ,	find:	[]
 ,	get:	[]
 ,	create:
 	[
-		auth.hashPassword('password')
+		local.hooks.hashPassword('password')
 	]
 ,	update:
 	[
-		auth.hashPassword('password')
+		local.hooks.hashPassword('password')
 	]
 ,	patch:
 	[
-		auth.hashPassword('password')
+		local.hooks.hashPassword('password')
 	]
 ,	remove:	[]
 };
