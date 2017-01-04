@@ -10,7 +10,7 @@ module.exports = {
 		// the entity that will be added to the request, socket, and hook.params. (ie. req.user, socket.user, hook.params.user)
 	,	entity: 'usuario'				
 		// the service to look up the entity
-	,	service: 'usuarios'
+	,	service: 'api/usuarios'
 		// whether the request object should be passed to the strategies `verify` function
 	,	passReqToCallback: true
 		// whether to use sessions
@@ -53,7 +53,7 @@ module.exports = {
 		// the entity that you're comparing username/password against
 	,	entity: 'usuario'
 		// the service to look up the entity
-	,	service: 'usuarios'
+	,	service: 'api/usuarios'
 		// key name of username field
 	,	usernameField: 'username'
 		// key name of password field

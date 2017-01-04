@@ -16,10 +16,10 @@ module.exports = function() {
   };
 
   // Initialize our service with any options it requires
-  app.use('ordenesDeCompra', service(options));
+  app.use('api/ordenesDeCompra', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const ordenesDeCompraService = app.service('ordenesDeCompra');
+  const ordenesDeCompraService = app.service('api/ordenesDeCompra');
 
   // Set up our before hooks
   ordenesDeCompraService.before(hooks.before);

@@ -16,10 +16,10 @@ module.exports = function() {
   };
 
   // Initialize our service with any options it requires
-  app.use('tarjetas', service(options));
+  app.use('api/tarjetas', service(options));
 
   // Get our initialize service to that we can bind hooks
-  const tarjetasService = app.service('tarjetas');
+  const tarjetasService = app.service('api/tarjetas');
 
   // Set up our before hooks
   tarjetasService.before(hooks.before);
