@@ -11,7 +11,7 @@ exports.before = {
 	[
 		auth.hooks.authenticate('jwt')
 //	,	permissions.hooks.checkPermissions({ service: 'users' })
-	,	permissions.hooks.isPermitted()
+//	,	permissions.hooks.isPermitted()
 	]
 ,	find:	[]
 ,	get:	[]
